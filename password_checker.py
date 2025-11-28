@@ -32,7 +32,7 @@ def is_digit(password):
      # Return to the user should be given somehow like "Password is strong" "..very strong" "..poor"
      # And it should give hints on how to make the password more strong if needed. 
         
-
+# Calling of the digit check function
 is_digit(pswd)
 
 
