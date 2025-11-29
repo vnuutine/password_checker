@@ -1,39 +1,56 @@
 # Get users password as a variable
 pswd = input("Input your password: ")
-# TODO: Create a function to check for the length of the password. And make it return a boolean value. 
 
-# Store passwords length as an interger
-length = len(pswd)
+# Function to check the length of the parameter string and return a boolean value based on the length.
+def pswd_length(password):
+    # Take the string length and assign it a variable as integer
+    length = len(password)
+    # Return a boolean value if string is long enough
+    if length < 8:
+        return False
+    else: 
+        return True
 
-# Output feedback on passwords length, limit is 8 characters
-if length < 8:
-    print("Password is not long enough!")
-else: 
-    print("Password length is good!")
-
-#TODO: Change the return to boolean values and handle the printing on a main function later.
 
 # Function for checking if the parameter string contains atleast one digit.
 def is_digit(password):
-    # Declare a variable for the digit check and make it equal to false.
+    # Declare a variable for the digit found, default as false.
     digit_found = False
-    # Loop through every character in the string and change the variable to true if digit is found.
+    # Loop through the string and break the loop if a digit is found, setting the variable to true.
     for c in password:
         if c.isdigit():
             digit_found = True
             break
-    # Return the feedback based on if there was a digit found.
+    # Return a boolean value based if there was a digit found in the string.
     if digit_found == True:
-        print("Password contains atleast one digit!")
+        return True
     else:
-        print("Password does not contain any digits!")
+        return False
 
-     # TODO: Create a function for collecting the values from checks and printing the results to the user
-     # Return to the user should be given somehow like "Password is strong" "..very strong" "..poor"
-     # And it should give hints on how to make the password more strong if needed. 
-        
-# Calling of the digit check function
-is_digit(pswd)
+
+def main():
+    results = { "long enough": pswd_length(pswd),
+                "has digits": is_digit(pswd)}
+    
+    results = sum(results.values())
+
+    print(results)
+    
+
+
+
+
+
+
+
+
+    
+
+
+
+
+main()
+
 
 
 
