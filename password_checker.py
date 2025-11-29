@@ -66,7 +66,7 @@ while True:
                     "has uppercase": has_uppercase(password),
                     "has lowercase": has_lowercase(password)}
 
-        hints = {   "long enough": "Your password should be longer than 8 characters!",
+        hints = {   "long enough": "Your password should be atleast 8 characters long!",
                     "has digits": "Your password should contain atleast one digit!",
                     "has uppercase": "Your password should contain atleast one uppercase letter",
                     "has lowercase": "Your password should contain atleast one lowercase letter"}
@@ -93,7 +93,10 @@ while True:
 
     main(pswd)
 
-
+# TODO: 1.	Add a has_symbol(password) check (for characters like !@#$%^&*).
+#   	2.	Adjust results, hints, and scoring to handle 5 rules instead of 4.
+#   	3.	Refactor the check functions to avoid repeated patterns (without breaking readability).
+#   	4.	Move all function definitions outside the while True loop and confirm everything still works.
 
 
 
