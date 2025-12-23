@@ -4,17 +4,17 @@ Evaluates a password against a small set of rules and provides
 a strength classification along with actionable feedback.
 """
 
-import sys
+import argparse
 
 # Approved non-alphanumeric symbols allowed in passwords
 SYMBOLS = {"!", "@", "#", "$", "%", "^", "&", "*"}
 
 HINTS = {
-    "long enough": "Your password should be atleast 8 characters long!",
-    "has digits": "Your password should contain atleast one digit!",
-    "has uppercase": "Your password should contain atleast one uppercase letter",
-    "has lowercase": "Your password should contain atleast one lowercase letter",
-    "has symbol": "Your password should contain atleast one symbol from !@#$%^&*",
+    "long enough": "Your password should be at least 8 characters long.",
+    "has digits": "Your password should contain at least one digit.",
+    "has uppercase": "Your password should contain at least one uppercase letter.",
+    "has lowercase": "Your password should contain at least one lowercase letter.",
+    "has symbol": "Your password should contain at least one symbol from '!@#$%^&*'.",
 }
 
 
@@ -24,7 +24,7 @@ def has_min_length(password):
 
 def has_digit(password):
     return any(c.isdigit() for c in password)
-        
+
 
 def has_uppercase(password):
     return any(c.isupper() for c in password)
@@ -32,15 +32,15 @@ def has_uppercase(password):
 
 def has_lowercase(password):
     return any(c.islower() for c in password)
-    
+
 
 def has_symbol(password):
     return any(c in SYMBOLS for c in password)
 
 
-# Return (score, strength_label, failed_rule_keys) for the given password.
 def analyze_password(password):
-   
+    """Return (score, strength_label, failed_rule_keys) for the given password."""
+
     results = {
         "long enough": has_min_length(password),
         "has digits": has_digit(password),
@@ -48,7 +48,7 @@ def analyze_password(password):
         "has lowercase": has_lowercase(password),
         "has symbol": has_symbol(password),
     }
-    # Aggregate rule results into a simple numeric score 
+    # Aggregate rule results into a simple numeric score.
     score = sum(results.values())
     failed_rules = [key for key, value in results.items() if not value]
     
@@ -80,14 +80,20 @@ def print_report(result):
 
 def main():
     
-    argc = len(sys.argv)
+    parser = argparse.ArgumentParser(
+        prog = "password_checker",
+        description = "Tool for checking the password strength"
+    )
+
+    parser.add_argument(
+        "password",
+        help = "Password to evaluate (use single quotes for the password)"
+    )
+
+    args = parser.parse_args()
+    pswd = args.password
     
-    if argc !=  2:
-        print("Usage: python password_checker.py <password>")
-        print("Example: python password_checker.py 'MyPassword123!'")
-        return
-    
-    result = analyze_password(sys.argv[1])
+    result = analyze_password(pswd)
     print_report(result)
 
 
