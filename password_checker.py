@@ -7,14 +7,14 @@ a strength classification along with actionable feedback.
 import argparse
 
 # Approved non-alphanumeric symbols allowed in passwords
-SYMBOLS = {"!", "@", "#", "$", "%", "^", "&", "*"}
+SYMBOLS = {"!", "@", "#", "$", "%", "^", "&", "*", "_", "-", "/"}
 
 HINTS = {
-    "long enough": "Your password should be at least 8 characters long.",
-    "has digits": "Your password should contain at least one digit.",
-    "has uppercase": "Your password should contain at least one uppercase letter.",
-    "has lowercase": "Your password should contain at least one lowercase letter.",
-    "has symbol": "Your password should contain at least one symbol from '!@#$%^&*'.",
+    "long enough": "Password should be at least 8 characters long.",
+    "has digits": "Password should contain at least one digit.",
+    "has uppercase": "Password should contain at least one uppercase letter.",
+    "has lowercase": "Password should contain at least one lowercase letter.",
+    "has symbol": "Password should contain at least one symbol from '!@#$%^&*_-/'.",
 }
 
 

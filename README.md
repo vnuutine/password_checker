@@ -25,7 +25,7 @@ A password is evaluated against the following criteria:
 - Contains at least one digit
 - Contains at least one uppercase letter
 - Contains at least one lowercase letter
-- Contains at least one symbol from `!@#$%^&*`
+- Contains at least one symbol from `!@#$%^&*_-/'.`
 
 Each satisfied rule contributes one point to the total score.
 
@@ -65,10 +65,10 @@ For a weaker password:
 Password score (0-5): 1
 Password strength: Very weak
 Missing rules:
-- long enough
-- has digits
-- has uppercase
-- has symbol
+- Password should be at least 8 characters long.
+- Password should contain at least one digit.
+- Password should contain at least one uppercase letter.
+- Password should contain at least one symbol from '!@#$%^&*'.
 ```
 
 ---
